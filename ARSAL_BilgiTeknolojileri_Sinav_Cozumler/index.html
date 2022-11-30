@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<style>
+div{
+float:left;
+}</style>
+<body>
+<h1>ARSAL BİLGİ TEKNOLOJİLER İŞE ALIM SORULARI</h1>
+<div>
+
+<img src="sorular.JPG" alt="sorular buradaydı." width="600" >
+
+</div>
+<div>
+<h3>Cevaplar</h3>
+<p id="cevap1">1. <button type="button" id="btn"> 1000000 kez Simüle et </button><br></p>
+<p id="cevap2">2. </p>
+<p id="cevap3">3. pişti için döngü oluşturulmuştur. Javcascript kodu içindeydi. <br> Programı etkilediği için kaldırdım ama altta cevabın ekran görüntüsü var </p>
+<img src="pisti_kodlar.JPG" alt="pişti sorusunun cevabı buradaydı." width="600" >
+
+</div>
+
+
+<script>
+//ÇUBUK SORUSU İÇİN 
+
+//sabit değerler
+const paralel_cizgi_array = [0.0, 10.0, 20.0, 30.0, 40.0,50.0,60.0,70.0,80.0,90.0];//aradaki eşit mesafeden faydalanacağım.
+const paralel_cizgi_araliklari=10.0;
+var cubuk_uzunlugu=10.0;
+var cubuk_kalinligi=0.03;
+var birakilan_cubuk_sayisi=1000000;
+
+
+//random değerler
+var cubuk_basi_x_komum=Math.random()*100; 
+var cubuk_aci= Math.random()*Math.PI - Math.PI/2;
+
+//hesaplama
+var cubuk_sonu_x_komum = cubuk_basi_x_komum + cubuk_uzunlugu * Math.cos(cubuk_aci); 
+var degebilecek_cizgi= cubuk_basi_x_komum+10-(cubuk_basi_x_komum % cubuk_uzunlugu);
+var degdi_mi=false;
+if(degebilecek_cizgi<cubuk_sonu_x_komum){degdi_mi=true;}
+
+//1 tane örnek simülasyon gösterilecek 
+document.getElementById("cevap1").innerHTML += "Bu değerler ilk örnek simülasyondur, daha sonra 1000000 kez tekrar edilecek " + "<br>";
+
+document.getElementById("cevap1").innerHTML += "paralel çizgiler: "+ paralel_cizgi_array + "<br>";
+document.getElementById("cevap1").innerHTML += "uzunluk: "+cubuk_uzunlugu + "<br>";
+document.getElementById("cevap1").innerHTML += "çubuk başı düşme x konumu: "+cubuk_basi_x_komum + "<br>";
+document.getElementById("cevap1").innerHTML += "çubuk düşme radyan cinsinden eğiklik açısı: " +cubuk_aci+ "<br>";
+document.getElementById("cevap1").innerHTML += "çubuk sonu düşme x konumu: "+cubuk_sonu_x_komum + "<br>";
+document.getElementById("cevap1").innerHTML += "çubuk değdi mi? : "+degdi_mi + "<br><br>";
+
+
+document.getElementById('btn').onclick = function(){
+  var kac_adet_kesisti=0;  
+//sabit değerler
+const paralel_cizgi_array = [0.0, 10.0, 20.0, 30.0, 40.0,50.0,60.0,70.0,80.0,90.0];//aradaki eşit mesafeden faydalanacağım.
+const paralel_cizgi_araliklari=10.0;
+var cubuk_uzunlugu=10.0;
+var cubuk_kalinligi=0.03;
+var birakilan_cubuk_sayisi=1000000;
+
+
+for(var i=0; i<birakilan_cubuk_sayisi; i++){
+//random değerler
+var cubuk_basi_x_komum=Math.random()*100; 
+var cubuk_aci= Math.random()*Math.PI - Math.PI/2;
+
+//hesaplama
+var cubuk_sonu_x_komum = cubuk_basi_x_komum + cubuk_uzunlugu * Math.cos(cubuk_aci); 
+var degebilecek_cizgi= cubuk_basi_x_komum+10-(cubuk_basi_x_komum % cubuk_uzunlugu);
+var degdi_mi=false;
+if(degebilecek_cizgi<cubuk_sonu_x_komum){
+ degdi_mi=true;
+ kac_adet_kesisti++;
+ }
+
+}
+var X = 2*cubuk_uzunlugu*birakilan_cubuk_sayisi/(kac_adet_kesisti*paralel_cizgi_araliklari)
+document.getElementById("cevap1").innerHTML += "Simülasyon sonucunda; " + "<br>";
+document.getElementById("cevap1").innerHTML += "kaç adet kesişti? : "+kac_adet_kesisti + "<br>";
+document.getElementById("cevap1").innerHTML += "X sonucu: "+X + "<br>";
+
+}
+
+
+
+</script>
+
+</body>
+</html>
